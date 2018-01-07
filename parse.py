@@ -75,12 +75,19 @@ def print_records(records):
 
 def get_records():
     records = []
-    records.extend(parse_table_for_all_pages("数据", "面上项目"))
-    records.extend(parse_table_for_all_pages("数据", "重点项目"))
-    records.extend(parse_table_for_all_pages("数据", "青年科学基金项目"))
-    records.extend(parse_table_for_all_pages("数据", "优秀青年基金项目"))
-    records.extend(parse_table_for_all_pages("数据", "国际(地区)合作与交流项目"))
-    records.extend(parse_table_for_all_pages("数据", "海外或港、澳青年学者合作研究基金"))
+    # records.extend(parse_table_for_all_pages("数据", "面上项目"))
+    # records.extend(parse_table_for_all_pages("数据", "重点项目"))
+    # records.extend(parse_table_for_all_pages("数据", "青年科学基金项目"))
+    # records.extend(parse_table_for_all_pages("数据", "优秀青年基金项目"))
+    # records.extend(parse_table_for_all_pages("数据", "国际(地区)合作与交流项目"))
+    # records.extend(parse_table_for_all_pages("数据", "海外或港、澳青年学者合作研究基金"))
+
+    records.extend(parse_table_for_all_pages("安全", "面上项目"))
+    records.extend(parse_table_for_all_pages("安全", "重点项目"))
+    records.extend(parse_table_for_all_pages("安全", "青年科学基金项目"))
+    records.extend(parse_table_for_all_pages("安全", "优秀青年基金项目"))
+    records.extend(parse_table_for_all_pages("安全", "国际(地区)合作与交流项目"))
+    records.extend(parse_table_for_all_pages("安全", "海外或港、澳青年学者合作研究基金"))
     print_records(records)
     return records
 
