@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 
 
 def save_file(keyword, category, page, html):
-    file_object = open('html/%s-%s-%s.html' % (keyword, category, page), 'w')
+    file_object = open('html/%s-%s-%s.html' % (keyword.decode("utf-8"), category.decode("utf-8"), page), 'w')
     file_object.write(html)
     file_object.close()
     print "Saved to: html/%s-%s-%s.html" % (keyword, category, page)
@@ -41,7 +41,7 @@ def search(keyword, category, page):
         print "page count = %d" % page_count
 
     if page_count != 0:
-        save_file(keyword.decode("utf-8"), category.decode("utf-8"), page, html)
+        save_file(keyword, category, page, html)
 
     return page_count
 
