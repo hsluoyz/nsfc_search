@@ -1,6 +1,7 @@
 # coding=utf8
 
 import bs4
+import os
 
 
 class Record:
@@ -22,8 +23,18 @@ def read_file(keyword, category, page):
     return html
 
 
-def parse_table(keyword, category):
-    html = read_file(keyword, category, 1)
+def parse_table_for_all_pages(keyword, category):
+    records = []
+    page = 1
+    while os.path.exists("html/%s-%s-%s.html" % (keyword.decode("utf-8"), category.decode("utf-8"), page)):
+        tmp = parse_table(keyword, category, page)
+        records.extend(tmp)
+        page += 1
+    return records
+
+
+def parse_table(keyword, category, page):
+    html = read_file(keyword, category, page)
 
     soup = bs4.BeautifulSoup(html, "html.parser")
     # print soup.prettify()
@@ -62,6 +73,18 @@ def print_records(records):
         cnt += 1
 
 
+# 面上项目
+# 重点项目
+# 青年科学基金项目
+# 优秀青年基金项目
+# 国际(地区)合作与交流项目
+# 海外或港、澳青年学者合作研究基金
 if __name__ == "__main__":
-    records = parse_table("数据", "面上项目")
+    records = []
+    records.extend(parse_table_for_all_pages("数据", "面上项目"))
+    records.extend(parse_table_for_all_pages("数据", "重点项目"))
+    records.extend(parse_table_for_all_pages("数据", "青年科学基金项目"))
+    records.extend(parse_table_for_all_pages("数据", "优秀青年基金项目"))
+    records.extend(parse_table_for_all_pages("数据", "国际(地区)合作与交流项目"))
+    records.extend(parse_table_for_all_pages("数据", "海外或港、澳青年学者合作研究基金"))
     print_records(records)
