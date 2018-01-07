@@ -73,13 +73,7 @@ def print_records(records):
         cnt += 1
 
 
-# 面上项目
-# 重点项目
-# 青年科学基金项目
-# 优秀青年基金项目
-# 国际(地区)合作与交流项目
-# 海外或港、澳青年学者合作研究基金
-if __name__ == "__main__":
+def get_records():
     records = []
     records.extend(parse_table_for_all_pages("数据", "面上项目"))
     records.extend(parse_table_for_all_pages("数据", "重点项目"))
@@ -88,3 +82,14 @@ if __name__ == "__main__":
     records.extend(parse_table_for_all_pages("数据", "国际(地区)合作与交流项目"))
     records.extend(parse_table_for_all_pages("数据", "海外或港、澳青年学者合作研究基金"))
     print_records(records)
+    return records
+
+
+# 面上项目
+# 重点项目
+# 青年科学基金项目
+# 优秀青年基金项目
+# 海外或港、澳青年学者合作研究基金
+# 国际(地区)合作与交流项目
+if __name__ == "__main__":
+    get_records()

@@ -52,13 +52,19 @@ def search_all_pages(keyword, category):
         search(keyword, category, i)
 
 
-# search_all_pages("数据", "面上项目")
-# search_all_pages("数据", "重点项目")
-# search_all_pages("数据", "重大项目")
+if __name__ == "__main__":
+    categories = ["面上项目", "重点项目", "重大项目", "青年科学基金项目", "优秀青年基金项目", "国家杰出青年科学基金", "海外或港、澳青年学者合作研究基金", "国际(地区)合作与交流项目"]
 
-# search_all_pages("数据", "青年科学基金项目")
-# search_all_pages("数据", "优秀青年基金项目")
-# search_all_pages("数据", "国家杰出青年科学基金")
+    for category in categories:
+        search_all_pages("安全", category)
 
-# search_all_pages("数据", "海外或港、澳青年学者合作研究基金")
-# search_all_pages("数据", "国际(地区)合作与交流项目")
+    # search_all_pages("数据", "面上项目")
+    # search_all_pages("数据", "重点项目")
+    # search_all_pages("数据", "重大项目")
+    #
+    # search_all_pages("数据", "青年科学基金项目")
+    # search_all_pages("数据", "优秀青年基金项目")
+    # search_all_pages("数据", "国家杰出青年科学基金")
+    #
+    # search_all_pages("数据", "海外或港、澳青年学者合作研究基金")
+    # search_all_pages("数据", "国际(地区)合作与交流项目")
