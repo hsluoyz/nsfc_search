@@ -49,14 +49,22 @@ def search(keyword, category, page):
 def search_all_pages(keyword, category):
     page_count = search(keyword, category, 1)
     for i in range(2, page_count + 1):
-        search(keyword, category, i)
+        success = False
+        while not success:
+            try:
+                search(keyword, category, i)
+                success = True
+            except:
+                pass
 
 
 if __name__ == "__main__":
-    categories = ["面上项目", "重点项目", "重大项目", "青年科学基金项目", "优秀青年基金项目", "国家杰出青年科学基金", "海外或港、澳青年学者合作研究基金", "国际(地区)合作与交流项目"]
+    search_all_pages("安全", "")
 
-    for category in categories:
-        search_all_pages("安全", category)
+    # categories = ["面上项目", "重点项目", "重大项目", "青年科学基金项目", "优秀青年基金项目", "国家杰出青年科学基金", "海外或港、澳青年学者合作研究基金", "国际(地区)合作与交流项目"]
+    #
+    # for category in categories:
+    #     search_all_pages("安全", category)
 
     # search_all_pages("数据", "面上项目")
     # search_all_pages("数据", "重点项目")

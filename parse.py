@@ -5,7 +5,8 @@ import os
 
 
 class Record:
-    def __init__(self, person, school, money, no, category, year):
+    def __init__(self, keyword, person, school, money, no, category, year):
+        self.keyword = keyword
         self.person = person
         self.school = school
         self.money = money
@@ -49,7 +50,7 @@ def parse_table(keyword, category, page):
 
         print str(cnt) + ": ",
         if cnt % 3 == 0:
-            r = Record(tds[0].string, tds[1].string, tds[2].string, tds[3].string, tds[4].string, tds[6].string)
+            r = Record(keyword, tds[0].string, tds[1].string, tds[2].string, tds[3].string, tds[4].string, tds[6].string)
             records.append(r)
         elif cnt % 3 == 1:
             records[-1].name = tds[1].string
@@ -69,25 +70,15 @@ def parse_table(keyword, category, page):
 def print_records(records):
     cnt = 0
     for r in records:
-        print "%d: (%s, %s, %s, %s, %s, %s, %s, %s)" % (cnt, r.person, r.school, r.money, r.no, r.category, r.name, r.year, r.subject)
+        print "%d: (%s, %s, %s, %s, %s, %s, %s, %s, %s)" % (cnt, "11", r.person, r.school, r.money, r.no, r.category, r.name, r.year, r.subject)
         cnt += 1
 
 
 def get_records():
     records = []
-    # records.extend(parse_table_for_all_pages("数据", "面上项目"))
-    # records.extend(parse_table_for_all_pages("数据", "重点项目"))
-    # records.extend(parse_table_for_all_pages("数据", "青年科学基金项目"))
-    # records.extend(parse_table_for_all_pages("数据", "优秀青年基金项目"))
-    # records.extend(parse_table_for_all_pages("数据", "国际(地区)合作与交流项目"))
-    # records.extend(parse_table_for_all_pages("数据", "海外或港、澳青年学者合作研究基金"))
+    records.extend(parse_table_for_all_pages("数据", ""))
 
-    records.extend(parse_table_for_all_pages("安全", "面上项目"))
-    records.extend(parse_table_for_all_pages("安全", "重点项目"))
-    records.extend(parse_table_for_all_pages("安全", "青年科学基金项目"))
-    records.extend(parse_table_for_all_pages("安全", "优秀青年基金项目"))
-    records.extend(parse_table_for_all_pages("安全", "国际(地区)合作与交流项目"))
-    records.extend(parse_table_for_all_pages("安全", "海外或港、澳青年学者合作研究基金"))
+    # records.extend(parse_table_for_all_pages("安全", "面上项目"))
     print_records(records)
     return records
 
