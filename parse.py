@@ -4,6 +4,11 @@ import bs4
 import os
 
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+
 class Record:
     def __init__(self, keyword, person, school, money, no, category, year):
         self.keyword = keyword
@@ -51,6 +56,12 @@ def parse_table(keyword, category, page):
         print str(cnt) + ": ",
         if cnt % 3 == 0:
             r = Record(keyword, tds[0].string, tds[1].string, tds[2].string, tds[3].string, tds[4].string, tds[6].string)
+            if r.category is None:
+                if float(r.money) < 100:
+                    r.category = "面上项目"
+                else:
+                    r.category = "重点项目"
+
             records.append(r)
         elif cnt % 3 == 1:
             records[-1].name = tds[1].string
@@ -76,7 +87,7 @@ def print_records(records):
 
 def get_records():
     records = []
-    records.extend(parse_table_for_all_pages("数据", ""))
+    records.extend(parse_table_for_all_pages("安全", ""))
 
     # records.extend(parse_table_for_all_pages("安全", "面上项目"))
     print_records(records)
